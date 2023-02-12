@@ -1,5 +1,6 @@
 <h1>This is your record! </h1>
 <p><strong>Username: </strong><%= @record.username %></p>
-<p><strong>Date Requested:</strong> <%= @record.created_at.to_formatted_s(:long_ordinal) %> </p>
-<p><strong> Range:</strong> <%= @record.months %> months</p>
+<p><strong>Date Requested: </strong><%= @record.created_at.to_date.to_formatted_s(:long_ordinal) %> </p>
+<p><strong>Start Date: </strong><%= @record.start_date.to_formatted_s(:long_ordinal) %>
+<p><strong> Range: </strong><%= @record.months %> months</p>
 <br><a href="/records" class="button">Back to list!</a>
