@@ -18,6 +18,6 @@ class RecordsController < ApplicationController
 
   private
   def record_params
-    params.require(:record).permit(:username, :months, :start_date)
+    params.require(:record).permit(:username, :months, :start_date, :data_type)
   end
 end

@@ -11,6 +11,10 @@
   </p>
 
   <p>
+    <%= f.select :data_type, [["Artists", "artists"], ["Albums", "albums"], ["Songs", "songs"]] %>
+  </p>
+
+  <p>
     <%= f.submit label: "hello"%>
   </p>
 <% end %>

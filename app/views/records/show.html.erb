@@ -3,4 +3,5 @@
 <p><strong>Date Requested: </strong><%= @record.created_at.to_date.to_formatted_s(:long_ordinal) %> </p>
 <p><strong>Start Date: </strong><%= @record.start_date.to_formatted_s(:long_ordinal) %>
 <p><strong> Range: </strong><%= @record.months %> months</p>
+<p><strong> Display Type: </strong><%= @record.data_type %></p>
 <br><a href="/records" class="button">Back to list!</a>
