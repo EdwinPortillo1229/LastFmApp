@@ -7,10 +7,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = Record.new(record_params)
-
-    @record.save!
-    @record.start_date = @record.created_at - (@record.months).months
+    @record = Record.new(record_params.merge(:start_date => Date.today - (params[:record][:months]).to_i.months))
     @record.save!
     redirect_to @record
   end
