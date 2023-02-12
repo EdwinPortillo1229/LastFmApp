@@ -1,3 +1,12 @@
-<h1>Records#index</h1> 
-<h1>Records#index</h1> 
-<h1>Records#index</h1>
+<h1>Hello! Welcome to Last.Fm Records Views</h1> 
+<table>
+  <tr>
+    <th>Username</th>
+  </tr>
+
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.username %></td>
+    </tr>
+  <% end %>
+</table>

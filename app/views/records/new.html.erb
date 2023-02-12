@@ -1,0 +1,11 @@
+<h1> We want to find your listening history for the past month! </h1>
+<%= form_with scope: :record, url: records_path, local: true do |f| %>
+  <p>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.submit label: "hello"%>
+  </p>
+<% end %>
