@@ -1,4 +1,5 @@
 <h1>Hello! Welcome to Last.Fm Records Views</h1> 
+<a href="/records/new" class="button">Start a new one</a>
 <table>
   <tr>
     <th>Username</th>
@@ -6,6 +7,7 @@
 
   <% @records.each do |record| %>
     <tr>
+      <td><a href="/records/<%= record.id %>" class="button">Show</a></td>
       <td><%= record.username %></td>
     </tr>
   <% end %>

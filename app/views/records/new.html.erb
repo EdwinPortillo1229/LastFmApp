@@ -1,8 +1,13 @@
+<a href="/records" class="button">Take me back!</a>
 <h1> We want to find your listening history for the past month! </h1>
 <%= form_with scope: :record, url: records_path, local: true do |f| %>
   <p>
   <%= f.label :username %>
   <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.select :months, [["1 month", 1], ["3 month", 3], ["6 months", 6], ["One year", 12]] %>
   </p>
 
   <p>
