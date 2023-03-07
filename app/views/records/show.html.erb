@@ -5,3 +5,9 @@
 <p><strong> Range: </strong><%= @record.months %> months</p>
 <p><strong> Display Type: </strong><%= @record.data_type %></p>
 <br><a href="/records" class="button">Back to list!</a>
+<div id="songs" style="text-align:center">
+  <b>These are your 200 most recent songs!</b>
+  <% @songs.each do |s| %>
+    <p> <%= s %> </p>
+  <% end %>
+</div>
