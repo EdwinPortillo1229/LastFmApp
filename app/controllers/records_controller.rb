@@ -11,6 +11,7 @@ class RecordsController < ApplicationController
   end
 
   def create
+    debugger
     @record = Record.new(record_params.merge(:start_date => Date.today - (params[:record][:months]).to_i.months))
     @record.save!
 

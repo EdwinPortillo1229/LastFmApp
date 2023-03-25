@@ -1,7 +1,7 @@
 require "test_helper"
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_create
+  post "/records", params: {"record"=>{"username"=>"edwinportilloo", "months"=>"1", "data_type"=>"artists"}}
+  end
 end
