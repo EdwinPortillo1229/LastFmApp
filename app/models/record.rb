@@ -19,16 +19,15 @@ class Record < ApplicationRecord
     songs
   end
 
-  def get_top_artists
-
+  def get_top_artists(username, time, api_key)
+    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
   end
 
   def get_top_songs(username, time, api_key)
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
-    debugger
   end
 
-  def get_top_albums
-
+  def get_top_albums(username, time, api_key)
+    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
   end
 end
