@@ -30,9 +30,19 @@ class Record < ApplicationRecord
 
   def get_top_songs(username, time, api_key)
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+    songs = []
+    res["toptracks"]["track"].each do |t|
+      songs << [t["name"], t["artist"]["name"], t["playcount"]]
+    end
+    songs
   end
 
   def get_top_albums(username, time, api_key)
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+    albums = []
+    res["topalbums"]["album"].each do |a|
+      albums << [a["name"], a["artist"]["name"], a["playcount"]]
+    end
+    albums
   end
 end

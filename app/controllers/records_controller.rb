@@ -19,7 +19,6 @@ class RecordsController < ApplicationController
     artists = @record.get_top_artists(@record.username, @record.months, LAST_FM_API_KEY)
     albums = @record.get_top_albums(@record.username, @record.months, LAST_FM_API_KEY)
 
-    debugger
     redirect_to record_path(@record, songs: songs)
   end
 
