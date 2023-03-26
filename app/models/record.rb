@@ -21,6 +21,11 @@ class Record < ApplicationRecord
 
   def get_top_artists(username, time, api_key)
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+    artists = []
+    res["topartists"]["artist"].each do |a|
+      artists << [a["name"], a["playcount"]]
+    end
+    artists
   end
 
   def get_top_songs(username, time, api_key)
