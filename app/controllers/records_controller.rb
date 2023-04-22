@@ -3,12 +3,8 @@ class RecordsController < ApplicationController
 
   LAST_FM_API_KEY = "11f12d6b2aae4b2b41e2abc116d687fd"
 
-  def index
-    @records = Record.all
-    Record.first(@records.count - 3).each{|r| r.destroy!}
-  end
-
   def new
+    Record.destroy_all
   end
 
   def create

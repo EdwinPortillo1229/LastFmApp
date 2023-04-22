@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "records#index"
+  root "records#new"
 
   resources :records
   get "/records", to: "records#index"
