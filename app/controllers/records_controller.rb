@@ -5,13 +5,15 @@ class RecordsController < ApplicationController
 
   def index
     @records = Record.all
+    Record.first(@records.count - 3).each{|r| r.destroy!}
   end
 
   def new
   end
 
   def create
-    @record = Record.new(record_params.merge(:start_date => Date.today - (params[:record][:months]).to_i.months))
+    start_date = (params[:record][:months] == "7day") ? (Date.today - 7.days) : (Date.today - (params[:record][:months]).to_i.months)
+    @record = Record.new(record_params.merge(:start_date => start_date))
     @record.save!
 
     data = @record.get_lastfm_data
