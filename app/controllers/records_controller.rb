@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    start_date = (params[:record][:months] == "7day") ? (Date.today - 7.days) : (Date.today - (params[:record][:months]).to_i.months)
+    start_date = Record.get_start_date(params)
     @record = Record.new(record_params.merge(:start_date => start_date))
     @record.save!
 

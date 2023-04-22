@@ -18,6 +18,10 @@ class Record < ApplicationRecord
     data
   end
 
+  def self.get_start_date(params)
+    (params[:record][:months] == "7day") ? (Date.today - 7.days) : (Date.today - (params[:record][:months]).to_i.months)
+  end
+
   def get_all_songs(first_page, username, from_date, to_date, api_key)
     songs = []
     pages = first_page["recenttracks"]["@attr"]["totalPages"].to_i
