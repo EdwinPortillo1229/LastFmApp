@@ -1,24 +1,20 @@
-<h1>This is your record! </h1>
-<p><strong>Username: </strong><%= @record.username %></p>
-<p><strong>Date Requested: </strong><%= @record.created_at.to_date.to_formatted_s(:long_ordinal) %> </p>
-<p><strong>Start Date: </strong><%= @record.start_date.to_formatted_s(:long_ordinal) %>
-<p><strong> Range: </strong><%= @record.months.humanize %> months</p>
-<p><strong> Display Type: </strong><%= @record.data_type %></p>
 <br><a href="/records" class="button">Back to list!</a>
+
+<% end_string = "for #{@record.username} from #{@record.start_date.to_date.to_formatted_s(:long_ordinal)} until now" %>
 
 <div id="record-data" style="text-align:center">
   <% if @data_type == "songs" %>
-    <b>These are your top songs!</b>
+    <h2><b>These are the top songs <%= end_string %>!</b></h2>
     <% @data.each do |s| %>
       <p> <%= s %> </p>
     <% end %>
   <% elsif @data_type == "artists" %>
-    <b>These are your top artists!</b>
+    <h2><b>These are the top artists <%= end_string %>!</b></h2>
     <% @data.each do |a| %>
       <p> <%= a %> </p>
     <% end %>
   <% elsif @data_type == "albums" %>
-    <b>These are your tops albums!</b>
+    <h2><b>These are the top albums <%= end_string %>!</b></h2>
     <% @data.each do |a| %>
       <p> <%= a %> </p>
     <% end %>
