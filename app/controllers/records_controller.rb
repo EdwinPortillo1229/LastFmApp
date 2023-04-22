@@ -15,14 +15,18 @@ class RecordsController < ApplicationController
     @record.save!
 
     data = @record.get_lastfm_data
-    debugger
 
-    redirect_to record_path(@record, songs: songs)
+    if data.blank?
+      redirect_to records_path and return
+    end
+
+    redirect_to record_path(@record, data_type: @record.data_type, data: data)
   end
 
   def show
     @record = Record.find(params[:id])
-    @songs = params[:songs]
+    @data_type = params[:data_type]
+    @data = params[:data]
   end
 
   private

@@ -12,8 +12,9 @@ class Record < ApplicationRecord
     when 'albums'
       self.get_top_albums
     when 'songs'
-      self.get_top_albums
+      self.get_top_songs
     end
+
     data
   end
 
@@ -37,29 +38,29 @@ class Record < ApplicationRecord
     songs
   end
 
-  def get_top_artists(username, time, api_key)
-    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+  def get_top_artists
+    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     artists = []
     res["topartists"]["artist"].each do |a|
-      artists << [a["name"], a["playcount"]]
+      artists << {name: a["name"], playcount: a["playcount"]}
     end
     artists
   end
 
-  def get_top_songs(username, time, api_key)
-    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+  def get_top_songs
+    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     songs = []
     res["toptracks"]["track"].each do |t|
-      songs << [t["name"], t["artist"]["name"], t["playcount"]]
+      songs << {song_name: t["name"], aritst_name: t["artist"]["name"], playcount: t["playcount"]}
     end
     songs
   end
 
-  def get_top_albums(username, time, api_key)
-    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{username}&period=#{time}&api_key=#{api_key}&format=json")).body)
+  def get_top_albums
+    res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     albums = []
     res["topalbums"]["album"].each do |a|
-      albums << [a["name"], a["artist"]["name"], a["playcount"]]
+      albums << {album_name: a["name"], artist_name: a["artist"]["name"], playcount: a["playcount"]}
     end
     albums
   end

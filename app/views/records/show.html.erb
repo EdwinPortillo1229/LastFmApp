@@ -2,12 +2,25 @@
 <p><strong>Username: </strong><%= @record.username %></p>
 <p><strong>Date Requested: </strong><%= @record.created_at.to_date.to_formatted_s(:long_ordinal) %> </p>
 <p><strong>Start Date: </strong><%= @record.start_date.to_formatted_s(:long_ordinal) %>
-<p><strong> Range: </strong><%= @record.months %> months</p>
+<p><strong> Range: </strong><%= @record.months.humanize %> months</p>
 <p><strong> Display Type: </strong><%= @record.data_type %></p>
 <br><a href="/records" class="button">Back to list!</a>
-<div id="songs" style="text-align:center">
-  <b>These are your 200 most recent songs!</b>
-  <% @songs.each do |s| %>
-    <p> <%= s %> </p>
+
+<div id="record-data" style="text-align:center">
+  <% if @data_type == "songs" %>
+    <b>These are your top songs!</b>
+    <% @data.each do |s| %>
+      <p> <%= s %> </p>
+    <% end %>
+  <% elsif @data_type == "artists" %>
+    <b>These are your top artists!</b>
+    <% @data.each do |a| %>
+      <p> <%= a %> </p>
+    <% end %>
+  <% elsif @data_type == "albums" %>
+    <b>These are your tops albums!</b>
+    <% @data.each do |a| %>
+      <p> <%= a %> </p>
+    <% end %>
   <% end %>
 </div>
