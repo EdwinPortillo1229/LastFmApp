@@ -1,4 +1,22 @@
 class Record < ApplicationRecord
+
+  def get_lastfm_data
+    user_data = Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=#{self.username}&api_key=11f12d6b2aae4b2b41e2abc116d687fd&format=json"))
+    if user_data.code == "404"
+      return nil
+    end
+
+    data = case self.data_type
+    when 'artists'
+      self.get_top_artists
+    when 'albums'
+      self.get_top_albums
+    when 'songs'
+      self.get_top_albums
+    end
+    data
+  end
+
   def get_all_songs(first_page, username, from_date, to_date, api_key)
     songs = []
     pages = first_page["recenttracks"]["@attr"]["totalPages"].to_i

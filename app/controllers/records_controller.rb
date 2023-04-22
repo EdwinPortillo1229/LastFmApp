@@ -14,10 +14,8 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params.merge(:start_date => Date.today - (params[:record][:months]).to_i.months))
     @record.save!
 
-
-    songs = @record.get_top_songs(@record.username, @record.months, LAST_FM_API_KEY)
-    artists = @record.get_top_artists(@record.username, @record.months, LAST_FM_API_KEY)
-    albums = @record.get_top_albums(@record.username, @record.months, LAST_FM_API_KEY)
+    data = @record.get_lastfm_data
+    debugger
 
     redirect_to record_path(@record, songs: songs)
   end
