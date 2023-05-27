@@ -1,7 +1,7 @@
-<br><a href="/records/new" class="button">Make a new one!</a>
-<h2><b>These are the top albums <%= @end_string %>!</b></h2>
+<h1><b>These are the top albums <%= @end_string %>!</b></h1>
 <div class="data-div">
   <% @data.each do |a| %>
     <p> <%= a[:album_name] %> by <%= a[:artist_name] %>: <%= a[:playcount] %> scrobbles </p>
   <% end %>
 </div>
+<br><a href="/records/new" class="button">Make a new one!</a>

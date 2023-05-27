@@ -13,3 +13,90 @@
  *= require_tree .
  *= require_self
  */
+
+ body{
+  position:relative;
+ }
+
+ h1{
+  position: relative;
+  text-align: center;
+ }
+
+ form{
+  position: relative;
+  text-align: center;
+ }
+
+ p{
+  position: relative;
+  text-align: center;
+ }
+
+ input{
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+ }
+
+ a{
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+ }
+
+ select{
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+ }
+
+ .data-div{
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+ }
