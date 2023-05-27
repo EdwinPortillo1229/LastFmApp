@@ -1,5 +1,5 @@
 <h1> We want to find your listening history for the past month! </h1>
-<%= form_with scope: :record, url: records_path, local: true do |f| %>
+<%= form_with scope: :record, url: records_path, id: "record_form", local: true do |f| %>
   <p>
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -17,3 +17,16 @@
     <%= f.submit label: "hello"%>
   </p>
 <% end %>
+
+<script>
+  const recordForm = document.getElementById('record_form');
+  const usernameBox = document.getElementById('record_username');
+  recordForm.addEventListener("submit", myScript);
+
+  function myScript() {
+    if (usernameBox.value == "") {
+      event.preventDefault();
+      alert("Please enter a username");
+    }
+  }
+</script>
