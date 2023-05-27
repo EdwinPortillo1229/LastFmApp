@@ -12,9 +12,9 @@
 
   <body>
     <% flash.each do |type, msg| %>
-        <div style="color:red;">
+        <p class="flash-message">
           <%= msg %>
-        </div>
+        </p>
     <% end %>
     <%= yield %>
   </body>

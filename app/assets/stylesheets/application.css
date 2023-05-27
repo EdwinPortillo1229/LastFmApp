@@ -18,10 +18,22 @@
   position:relative;
  }
 
- h1{
+ .header {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+ h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  color: #333;
   position: relative;
   text-align: center;
- }
+}
+
+ h1 {
+  margin-bottom: 20px;
+}
 
  form{
   position: relative;
@@ -29,6 +41,9 @@
  }
 
  p{
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
   position: relative;
   text-align: center;
  }
@@ -91,12 +106,47 @@
   margin-bottom: 10px;
  }
 
+ /* Set the background color and text color */
+.flash-message {
+  background-color: red;
+  color: #333;
+  padding: 10px;
+}
+
+/* Add some margin and align the text */
+.flash-message {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Add a subtle box shadow */
+.flash-message {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a smooth transition effect */
+.flash-message {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Change the background color on hover */
+.flash-message:hover {
+  background-color: #ffcc00;
+}
+
+/* Customize the font and font size */
+.flash-message p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
  .data-div{
   position: relative;
   text-align: center;
   margin: 0 auto;
   width: 50%;
-  border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
  }
