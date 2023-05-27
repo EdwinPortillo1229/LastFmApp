@@ -96,15 +96,78 @@
   -moz-transition: all 0.3s ease-in-out;
  }
 
- select{
-  position: relative;
-  text-align: center;
-  margin: 0 auto;
-  width: 50%;
-  border: 1px solid black;
+ select {
+  width: 200px;
   padding: 10px;
-  margin-bottom: 10px;
- }
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+select option {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:active {
+  background-color: #004eab;
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.text-box {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.text-box:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.text-box::placeholder {
+  color: #999;
+}
 
  /* Set the background color and text color */
 .flash-message {

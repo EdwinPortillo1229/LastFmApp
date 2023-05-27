@@ -2,7 +2,7 @@
 <%= form_with scope: :record, url: records_path, id: "record_form", local: true do |f| %>
   <p>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username, class: "text-box" %>
   </p>
 
   <p>
@@ -14,7 +14,7 @@
   </p>
 
   <p>
-    <%= f.submit label: "hello"%>
+    <%= f.submit class: "submit-button"%>
   </p>
 <% end %>
 
