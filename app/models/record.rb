@@ -55,7 +55,7 @@ class Record < ApplicationRecord
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     songs = []
     res["toptracks"]["track"].each do |t|
-      songs << {song_name: t["name"], aritst_name: t["artist"]["name"], playcount: t["playcount"]}
+      songs << {song_name: t["name"], artist_name: t["artist"]["name"], playcount: t["playcount"]}
     end
     songs
   end

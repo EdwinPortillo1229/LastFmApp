@@ -1,5 +1,7 @@
 <br><a href="/records/new" class="button">Make a new one!</a>
 <h2><b>These are the top artists <%= @end_string %>!</b></h2>
-<% @data.each do |a| %>
-  <p> <%= a %> </p>
-<% end %>
+<div class="data-div">
+  <% @data.each do |a| %>
+    <p> <%= a[:name] %>: <%= a[:playcount] %> scrobbles </p>
+  <% end %>
+</div>
