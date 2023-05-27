@@ -15,7 +15,7 @@ class RecordsController < ApplicationController
     data = @record.get_lastfm_data
 
     if data.blank?
-      redirect_to root_path, notice: "No Last.Fm users with the usersname '#{@record.username}' were found, please try again" and return
+      redirect_to root_path, notice: "No Last.Fm users with the usersname '#{@record.username}' were found, please try again. BIthsdoh" and return
       @record.destroy!
     end
 
@@ -24,8 +24,16 @@ class RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
-    @data_type = params[:data_type]
+    @end_string = "for #{@record.username} from #{@record.start_date.to_date.to_formatted_s(:long_ordinal)} until now"
     @data = params[:data]
+    case params[:data_type]
+    when 'artists'
+      render template: "records/artists"
+    when 'albums'
+      render template: "records/albums"
+    when 'songs'
+      render template: "records/songs"
+    end
   end
 
   private
