@@ -1,4 +1,6 @@
-<h1> We want to find your listening history for the past month! </h1>
+<div>
+<h1 id="new-title"> We want to find your listening history for the past month! </h1>
+</div>
 <%= form_with scope: :record, url: records_path, id: "record_form", local: true do |f| %>
   <p>
   <%= f.label :username %>
@@ -18,15 +20,21 @@
   </p>
 <% end %>
 
+<div class="custom-loader" id="circles-loading""></div>
+
 <script>
   const recordForm = document.getElementById('record_form');
   const usernameBox = document.getElementById('record_username');
-  recordForm.addEventListener("submit", myScript);
+  const loader = document.getElementById('circles-loading');
+  recordForm.addEventListener("submit", formSubmit);
 
-  function myScript() {
+  function formSubmit() {
     if (usernameBox.value == "") {
       event.preventDefault();
       alert("Please enter a username");
     }
+    recordForm.style.display = "none";
+    document.getElementById('new-title').style.display = "none";
+    loader.style.display = "block";
   }
 </script>
