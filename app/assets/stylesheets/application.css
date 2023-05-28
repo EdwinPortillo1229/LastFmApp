@@ -52,7 +52,7 @@
   position: relative;
   text-align: center;
   margin: 0 auto;
-  width: 50%;
+  width: 20%;
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
@@ -97,7 +97,7 @@
  }
 
  select {
-  width: 200px;
+  width: 25%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -120,7 +120,6 @@ select:focus {
 }
 
 .submit-button {
-  display: inline-block;
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -149,7 +148,7 @@ select:focus {
 
 .text-box {
   display: block;
-  width: 200px;
+  width: 30%;
   padding: 10px;
   border: 1px solid #007bff;
   border-radius: 4px;
