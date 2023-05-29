@@ -45,8 +45,10 @@ class Record < ApplicationRecord
   def get_top_artists
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     artists = []
-    res["topartists"]["artist"].each do |a|
-      artists << {name: a["name"], playcount: a["playcount"]}
+    res["topartists"]["artist"].first(20).each do |a|
+      images_array = a["image"]
+      extra_large_image_url = images_array[3]["#text"]
+      artists << {name: a["name"], playcount: a["playcount"], image: extra_large_image_url}
     end
     artists
   end
@@ -63,8 +65,10 @@ class Record < ApplicationRecord
   def get_top_albums
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     albums = []
-    res["topalbums"]["album"].each do |a|
-      albums << {album_name: a["name"], artist_name: a["artist"]["name"], playcount: a["playcount"]}
+    res["topalbums"]["album"].first(20).each do |a|
+      images_array = a["image"]
+      extra_large_image_url = images_array[3]["#text"]
+      albums << {album_name: a["name"], artist_name: a["artist"]["name"], playcount: a["playcount"], image: extra_large_image_url}
     end
     albums
   end

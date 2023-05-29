@@ -1,6 +1,7 @@
 <h1><b>These are the top albums <%= @end_string %>!</b></h1>
 <div class="data-div">
   <% @data.each do |a| %>
+    <%= image_tag("#{a[:image]}", class: 'custom-image') %>
     <p> <%= a[:album_name] %> by <%= a[:artist_name] %>: <%= a[:playcount] %> scrobbles </p>
   <% end %>
 </div>
