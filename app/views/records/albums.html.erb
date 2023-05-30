@@ -3,6 +3,7 @@
   <% @data.each do |a| %>
     <%= image_tag("#{a[:image]}", class: 'custom-image') %>
     <p> <%= a[:album_name] %> by <%= a[:artist_name] %>: <%= a[:playcount] %> scrobbles </p>
+    <br>
   <% end %>
 </div>
 <br><a href="/records/new" class="button">Make a new one!</a>
