@@ -65,9 +65,11 @@ class Record < ApplicationRecord
   def get_top_albums
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     albums = []
+    image_paths = []
     res["topalbums"]["album"].first(20).each do |a|
       images_array = a["image"]
       extra_large_image_url = images_array[3]["#text"]
+      image_paths << extra_large_image_url
       albums << {album_name: a["name"], artist_name: a["artist"]["name"], playcount: a["playcount"], image: extra_large_image_url}
     end
     albums
