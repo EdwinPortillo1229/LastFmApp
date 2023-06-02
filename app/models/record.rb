@@ -1,5 +1,5 @@
+require 'rmagick'
 class Record < ApplicationRecord
-
   def get_lastfm_data
     user_data = Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=#{self.username}&api_key=11f12d6b2aae4b2b41e2abc116d687fd&format=json"))
     if user_data.code == "404"
@@ -72,6 +72,20 @@ class Record < ApplicationRecord
       image_paths << extra_large_image_url
       albums << {album_name: a["name"], artist_name: a["artist"]["name"], playcount: a["playcount"], image: extra_large_image_url}
     end
+    canvas = Magick::Image.new(900, 900) do |c|
+      c.background_color = 'white'
+    end
+
+    image_paths.each_with_index do |image_path, index|
+      image = Magick::Image.read(image_path).first
+      image.resize_to_fill!(image_width, image_height)
+      row = index / 3
+      col = index % 3
+      canvas.composite!(image, col * image_width, row * image_height, Magick::OverCompositeOp)
+    end
+
+    canvas.write('path/to/output_collage.jpg')
+    debugger
     albums
   end
 end
