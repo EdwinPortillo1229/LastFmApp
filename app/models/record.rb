@@ -1,4 +1,5 @@
 require 'rmagick'
+require 'securerandom'
 class Record < ApplicationRecord
   def get_lastfm_data
     user_data = Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=#{self.username}&api_key=11f12d6b2aae4b2b41e2abc116d687fd&format=json"))
@@ -66,6 +67,8 @@ class Record < ApplicationRecord
     res = JSON.parse(Net::HTTP.get_response(URI("https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=#{self.username}&period=#{self.months}&api_key=#{RecordsController::LAST_FM_API_KEY}&format=json")).body)
     albums = []
     image_paths = []
+    random_string = SecureRandom.random_number(1_000_000_000).to_s.rjust(10, '0')
+
     res["topalbums"]["album"].first(20).each do |a|
       images_array = a["image"]
       extra_large_image_url = images_array[3]["#text"]
@@ -94,7 +97,7 @@ class Record < ApplicationRecord
       canvas.composite!(image, col * image_width, row * image_height, Magick::OverCompositeOp)
     end
 
-    canvas.write('output_collage.jpg')
-    albums
+    canvas.write(Rails.root.join('public', 'collages', "output_collage#{random_string}.jpg"))
+    random_string
   end
 end
