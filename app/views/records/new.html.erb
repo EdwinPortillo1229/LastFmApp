@@ -28,13 +28,14 @@
   const loader = document.getElementById('circles-loading');
   recordForm.addEventListener("submit", formSubmit);
 
-  function formSubmit() {
+  function formSubmit(event) {
     if (usernameBox.value == "") {
       event.preventDefault();
       alert("Please enter a username");
+    }else{
+      recordForm.style.display = "none";
+      document.getElementById('new-title').style.display = "none";
+      loader.style.display = "block";
     }
-    recordForm.style.display = "none";
-    document.getElementById('new-title').style.display = "none";
-    loader.style.display = "block";
   }
 </script>

@@ -15,7 +15,7 @@ class RecordsController < ApplicationController
     data = Record.get_lastfm_data(params)
 
     if data.blank?
-      redirect_to root_path, notice: "No Last.Fm users with the usersname '#{@record.username}' were found, please try again." and return
+      redirect_to root_path, notice: "No Last.Fm users with the usersname '#{params[:record][:username]}' were found, please try again." and return
       @record.destroy!
     end
 
