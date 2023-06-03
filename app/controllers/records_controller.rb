@@ -9,31 +9,24 @@ class RecordsController < ApplicationController
 
   def create
     start_date = Record.get_start_date(params)
-    @record = Record.new(record_params.merge(:start_date => start_date))
-    @record.save!
+    # @record = Record.new(record_params.merge(:start_date => start_date))
+    # @record.save!
 
-    data = @record.get_lastfm_data
+    data = Record.get_lastfm_data(params)
 
     if data.blank?
       redirect_to root_path, notice: "No Last.Fm users with the usersname '#{@record.username}' were found, please try again." and return
       @record.destroy!
     end
 
-    redirect_to record_path(@record, data_type: @record.data_type, data: data)
+    redirect_to collage_path(data: data)
   end
 
-  def show
-    @record = Record.find(params[:id])
-    @end_string = "for #{@record.username} from #{@record.start_date.to_date.to_formatted_s(:long_ordinal)} until now"
-    @data = params[:data]
-    case params[:data_type]
-    when 'artists'
-      render template: "records/artists"
-    when 'albums'
-      render template: "records/albums"
-    when 'songs'
-      render template: "records/songs"
-    end
+  def collage
+    @end_string = "for #{params[:data][:username]} from #{params[:data][:start_date].to_date.to_formatted_s(:long_ordinal)} until now"
+    @data = params[:data][:random_string]
+    puts("data: #{@data}")
+    render template: "records/albums"
   end
 
   private
