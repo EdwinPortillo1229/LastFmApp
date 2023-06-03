@@ -5,5 +5,7 @@
     <p> <%= a[:album_name] %> by <%= a[:artist_name] %>: <%= a[:playcount] %> scrobbles </p>
     <br>
   <% end %>
+
+  <%= image_tag(Rails.root.join('images', 'output_collage.jpg')) %>
 </div>
 <br><a href="/records/new" class="button">Make a new one!</a>

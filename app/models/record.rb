@@ -83,7 +83,7 @@ class Record < ApplicationRecord
       col = index % 3
       canvas.composite!(image, col * 300, row * 300, Magick::OverCompositeOp)
     end
-    canvas.write('/images/output_collage.jpg')
+    canvas.write(Rails.root.join('images', 'output_collage.jpg'))
     albums
   end
 end
