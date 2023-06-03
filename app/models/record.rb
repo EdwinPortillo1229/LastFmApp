@@ -76,14 +76,25 @@ class Record < ApplicationRecord
       c.background_color = 'white'
     end
 
-    image_paths.first(9).each_with_index do |image_path, index|
-      image = Magick::Image.read(image_path).first
-      image.resize_to_fill!(300, 300)
-      row = index / 3
-      col = index % 3
-      canvas.composite!(image, col * 300, row * 300, Magick::OverCompositeOp)
+    canvas_width = 900
+    canvas_height = 900
+    image_width = 300
+    image_height = 300
+    columns = 3
+
+    canvas = Magick::Image.new(canvas_width, canvas_height) do |c|
+      c.background_color = 'white'
     end
-    canvas.write(Rails.root.join('images', 'output_collage.jpg'))
+
+    image_paths.first(9).each_with_index do |image_url, index|
+      image = Magick::Image.read(image_url).first
+      image.resize_to_fill!(image_width, image_height)
+      row = index / columns
+      col = index % columns
+      canvas.composite!(image, col * image_width, row * image_height, Magick::OverCompositeOp)
+    end
+
+    canvas.write('output_collage.jpg')
     albums
   end
 end
