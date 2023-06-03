@@ -9,9 +9,6 @@ class RecordsController < ApplicationController
 
   def create
     start_date = Record.get_start_date(params)
-    # @record = Record.new(record_params.merge(:start_date => start_date))
-    # @record.save!
-
     data = Record.get_lastfm_data(params)
 
     if data.blank?
@@ -27,10 +24,5 @@ class RecordsController < ApplicationController
     @data = params[:data][:random_string]
     puts("data: #{@data}")
     render template: "records/albums"
-  end
-
-  private
-  def record_params
-    params.require(:record).permit(:username, :months, :start_date, :data_type)
   end
 end
