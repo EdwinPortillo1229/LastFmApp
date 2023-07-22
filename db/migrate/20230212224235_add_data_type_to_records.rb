@@ -1,4 +1,4 @@
-class AddDataTypeToRecords < ActiveRecord::Migration[7.0]
+class AddDataTypeToRecords < ActiveRecord::Migration[6.1]
   def change
     add_column :records, :data_type, :string
   end

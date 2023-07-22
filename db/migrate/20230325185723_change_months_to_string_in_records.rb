@@ -1,4 +1,4 @@
-class ChangeMonthsToStringInRecords < ActiveRecord::Migration[7.0]
+class ChangeMonthsToStringInRecords < ActiveRecord::Migration[6.1]
   def change
     change_column :records, :months, :string
   end
