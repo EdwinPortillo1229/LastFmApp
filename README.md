@@ -1,24 +1,9 @@
-# README
+This Repo is for creating collages based on LastFM Data
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You can insert your 
 
-Things you may want to cover:
+* LastFM Username
+* The type of time frame of data you would like (7 days, 1 month, 3 months, 6 months, a year)
+* The collage size (3x3, 4x4, 5x5)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then a collage image is generated of your most listened to albums according to the metrics entered!
