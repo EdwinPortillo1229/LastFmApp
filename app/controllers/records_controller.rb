@@ -1,8 +1,8 @@
 class RecordsController < ApplicationController
   require 'net/http'
 
-  LAST_FM_API_KEY = "11f12d6b2aae4b2b41e2abc116d687fd"
-
+  LAST_FM_API_KEY = ENV['LAST_FM_API_KEY']
+     
   def new
     Record.destroy_all
   end
